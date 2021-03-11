@@ -52,7 +52,7 @@ class TestCard(unittest.TestCase):
         '''
         c = hw5_cards.Card(1,12)
         self.assertEqual(c.suit_name,"Clubs")
-        return c.suit_name    
+        # return c.suit_name    
     
 
     def test_q3(self):
