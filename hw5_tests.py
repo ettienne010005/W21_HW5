@@ -1,3 +1,8 @@
+#########################################
+##### Name: Tzu-Ching Lin           #####
+##### Uniqname:tzlin                #####
+#########################################
+
 import unittest
 import hw5_cards
 
@@ -36,7 +41,7 @@ class TestCard(unittest.TestCase):
         '''
         q = hw5_cards.Card(0,12)
         self.assertEqual(q.rank_name,"Queen")
-        # return 
+        return q.rank_name,"Queen"
     
     def test_q2(self):
         '''
@@ -52,7 +57,7 @@ class TestCard(unittest.TestCase):
         '''
         c = hw5_cards.Card(1,12)
         self.assertEqual(c.suit_name,"Clubs")
-        # return c.suit_name    
+        return c.suit_name,"Clubs"
     
 
     def test_q3(self):
@@ -70,7 +75,7 @@ class TestCard(unittest.TestCase):
         '''
         c = hw5_cards.Card(3,13)
         self.assertEqual(c.__str__(),"King of Spades")
-        # return print(c.__str__())
+        return c.__str__(),"King of Spades"
     
     def test_q4(self):
         '''
@@ -85,10 +90,8 @@ class TestCard(unittest.TestCase):
 
         '''
         d = hw5_cards.Deck()
-        for index in range(52): #check whether the deck contains 52 card instances
-            self.assertIsInstance(d.cards[index],hw5_cards.Card)
-        self.assertEqual(len(d.cards),52) #check the number of cards 
-        #return X, Y  
+        self.assertEqual(len(d.cards),52) #check the number of cards is 52
+        return len(d.cards),52
 
     def test_q5(self):
         '''
@@ -105,7 +108,7 @@ class TestCard(unittest.TestCase):
         d = hw5_cards.Deck()
         self.assertIsInstance(d.deal_card(),hw5_cards.Card)
 
-        #return X, Y
+        return d.deal_card(),hw5_cards.Card
     
     def test_q6(self):
         '''
@@ -123,7 +126,7 @@ class TestCard(unittest.TestCase):
         d = hw5_cards.Deck()
         c = d.deal_card()
         self.assertEqual(len(d.cards),51) 
-        #return X, Y    
+        return len(d.cards),51   
     
 
     def test_q7(self):
@@ -142,9 +145,10 @@ class TestCard(unittest.TestCase):
         d = hw5_cards.Deck()
         c = d.deal_card() #pop a card from deck
         previous_num_cards = len(d.cards) #record the previous number of cards in deck: 51
+        self.assertEqual(previous_num_cards,51)# check that the deck now has 51 cards
         d.replace_card(c) #add the card back to deck
         self.assertEqual(len(d.cards),previous_num_cards+1) #check the number of cards increments 
-        #return X, Y
+        return previous_num_cards,len(d.cards),previous_num_cards+1
     
     def test_q8(self):
         '''
@@ -160,13 +164,12 @@ class TestCard(unittest.TestCase):
 
         '''
         d = hw5_cards.Deck()
-        c1 = d.deal_card() #remove King of Spades from deck
         c2 = d.cards[1] #obtain a card from the deck
-        self.assertIn(c2,d.cards) #assert whether the card exist in the deck
+        self.assertIn(c2,d.cards) #check whether the card exist in the deck
         d.replace_card(c2) #try to replace the card which exists in the deck
-        self.assertEqual(len(d.cards),51) #assert whether the number of cards does not change 
+        self.assertEqual(len(d.cards),52) #check whether the number of cards does not change 
     
-        #return X, Y  
+        return len(d.cards),52
 
 
 
